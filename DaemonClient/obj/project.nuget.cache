@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "j0pejppjCeGcOKAzNt5FjDDMexIeY+iVDGLpWdI5eBIrL4s3l+meq4KDhhBDcxIyqasVD3ooge3KvpWK0kKT5w==",
+  "dgSpecHash": "uAiK8/Nv/EsLNJ1hpbp97OeQI4TIOhXWhezadArcK0BeLrZ/GAieQFhX0eJ3W4vYTPcNRVmeXcvVmfNmGoNANg==",
   "success": true,
   "projectFilePath": "/home/exploit90/Documents/STS/DaemonClient/DaemonClient.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "/home/exploit90/.nuget/packages/identitymodel/4.4.0/identitymodel.4.4.0.nupkg.sha512",
+    "/home/exploit90/.nuget/packages/newtonsoft.json/11.0.2/newtonsoft.json.11.0.2.nupkg.sha512",
+    "/home/exploit90/.nuget/packages/system.text.encodings.web/4.7.0/system.text.encodings.web.4.7.0.nupkg.sha512"
+  ],
   "logs": []
 }

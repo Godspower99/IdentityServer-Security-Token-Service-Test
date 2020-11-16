@@ -37,7 +37,7 @@ namespace IdentityServer
                     AllowedGrantTypes = GrantTypes.ClientCredentials,
 
                     ClientSecrets = {
-                        new Secret("deamon-client-secret","Daemon client secret")
+                        new Secret("daemon-client-secret".Sha256(),"Daemon client secret")
                     },
                     AllowedScopes = {"access-protected-api"}
                 },

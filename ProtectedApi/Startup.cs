@@ -1,3 +1,5 @@
+using System.Net.Security;
+using System.Net.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,14 +29,22 @@ namespace ProtectedApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-
+            var handler = new HttpClientHandler();
+            handler.ServerCertificateCustomValidationCallback = (a, b, c, d) => true;
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                     .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options => {
+                        options.BackchannelHttpHandler = handler;
                        options.Authority = "https://localhost:5001";
                        options.TokenValidationParameters = new TokenValidationParameters{
                            ValidateAudience = false,
                        };
                     });
+            services.AddAuthorization(options => {
+               options.AddPolicy("protected-api", policy => {
+                   policy.RequireAuthenticatedUser();
+                   policy.RequireClaim("scope", "access-protected-api");
+               });
+            });
                     
         }
 
@@ -54,7 +64,7 @@ namespace ProtectedApi
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
+                endpoints.MapControllers().RequireAuthorization("protected-api");
             });
         }
     }
